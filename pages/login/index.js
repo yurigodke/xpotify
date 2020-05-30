@@ -1,8 +1,10 @@
 import React, { PureComponent } from "react";
 
+import { Guide } from "../../module";
+
 class Login extends PureComponent {
   render() {
-    return <div>Login</div>;
+    return <Guide>Login</Guide>;
   }
 }
 
