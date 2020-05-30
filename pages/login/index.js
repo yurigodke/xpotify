@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 
-import { Guide } from "../../module";
+import { Guide } from "Modules";
 
 class Login extends PureComponent {
   render() {
