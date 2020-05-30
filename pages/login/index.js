@@ -4,7 +4,10 @@ import { Guide } from "Modules";
 
 class Login extends PureComponent {
   render() {
-    return <Guide>Login</Guide>;
+    const guideElements = {
+      content: <div>Login</div>
+    };
+    return <Guide {...guideElements} />;
   }
 }
 

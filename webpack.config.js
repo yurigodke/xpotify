@@ -47,7 +47,8 @@ module.exports = {
     extensions: [".js", ".jsx", ".scss"],
     alias: {
       Modules: path.resolve(__dirname, "modules/"),
-      Pages: path.resolve(__dirname, "pages/")
+      Pages: path.resolve(__dirname, "pages/"),
+      Misc: path.resolve(__dirname, "misc/")
     }
   }
 };
