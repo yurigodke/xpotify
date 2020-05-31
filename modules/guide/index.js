@@ -22,7 +22,7 @@ function Guide({ bar, content, bottom }) {
           style["guide__main__center"]
         )}
       >
-        <div className={style["guide__main__content"]}>{content}</div>
+        {content}
       </div>
     );
   }

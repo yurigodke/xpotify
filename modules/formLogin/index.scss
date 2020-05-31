@@ -1,0 +1,15 @@
+@import "~Misc/variables.scss";
+
+.formLogin {
+  max-width: 400px;
+  width: 100%;
+  margin-top: 100px;
+  padding: 30px 20px;
+  background: $boxBackgroundColor;
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  &__input {
+    margin-bottom: 20px;
+  }
+}

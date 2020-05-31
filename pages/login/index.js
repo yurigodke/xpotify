@@ -1,11 +1,11 @@
 import React, { PureComponent } from "react";
 
-import { Guide } from "Modules";
+import { Guide, FormLogin } from "Modules";
 
 class Login extends PureComponent {
   render() {
     const guideElements = {
-      content: <div>Login</div>
+      content: <FormLogin />
     };
     return <Guide {...guideElements} />;
   }
