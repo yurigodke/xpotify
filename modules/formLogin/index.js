@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import style from "./index.scss";
 
-import { Input } from "Components";
+import { Input, Button } from "Components";
 
 function FormLogin({}) {
   return (
@@ -23,6 +23,7 @@ function FormLogin({}) {
         type="password"
         placeHolder="Digite sua senha"
       />
+      <Button>Entrar</Button>
     </div>
   );
 }

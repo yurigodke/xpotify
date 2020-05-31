@@ -8,6 +8,8 @@
   background: $boxBackgroundColor;
   border-radius: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   &__input {
     margin-bottom: 20px;

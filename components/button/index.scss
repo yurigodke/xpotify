@@ -1,0 +1,18 @@
+@import "~Misc/variables.scss";
+
+.button {
+  align-self: flex-end;
+  font-family: $fontText;
+  font-size: $inputDefaultSize;
+  color: $textPrimaryColor;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  &:hover {
+    background: #fafafa;
+    color: $boxBackgroundColor;
+  }
+}
