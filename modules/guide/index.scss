@@ -16,5 +16,13 @@
     &__center {
       justify-content: center;
     }
+
+    &__bar {
+      width: 5%;
+    }
+
+    &__content {
+      width: 95%;
+    }
   }
 }

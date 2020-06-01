@@ -12,8 +12,7 @@ class Button extends PureComponent {
 }
 
 Button.propTypes = {
-  label: PropTypes.string,
-  action: PropTypes.func
+  children: PropTypes.string
 };
 
 export default Button;

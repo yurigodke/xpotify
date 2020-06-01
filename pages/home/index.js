@@ -1,12 +1,19 @@
 import React, { PureComponent } from "react";
 
-import { Guide, Search } from "Modules";
+import { Guide, Search, AlbumList } from "Modules";
+
+import style from "./index.scss";
 
 class Home extends PureComponent {
   render() {
     const guideElements = {
       bar: <div>Logo</div>,
-      content: <Search />
+      content: (
+        <div className={style["home__content"]}>
+          <Search />
+          <AlbumList title="Álbuns buscados recentemente" />
+        </div>
+      )
     };
     return <Guide {...guideElements} />;
   }

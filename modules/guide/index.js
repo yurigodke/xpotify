@@ -10,8 +10,8 @@ function Guide({ bar, content, bottom }) {
   if (bar && content) {
     mainContent = (
       <div className={style["guide__main"]}>
-        {bar}
-        {content}
+        <div className={style["guide__main__bar"]}>{bar}</div>
+        <div className={style["guide__main__content"]}>{content}</div>
       </div>
     );
   } else if (content) {

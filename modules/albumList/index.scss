@@ -1,0 +1,26 @@
+@import "~Misc/variables.scss";
+
+.albumList {
+  padding: 80px 50px 0;
+  box-sizing: border-box;
+
+  &__title {
+    font-size: $inputDefaultSize;
+    color: $textPrimaryColor;
+    font-family: $fontText;
+    margin: 0 5px;
+  }
+
+  &__itens {
+    overflow: auto;
+
+    &__content-scroll {
+      display: flex;
+    }
+
+    &__content-noscroll {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
