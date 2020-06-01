@@ -15,6 +15,7 @@
   }
 
   &__placeHolder {
+    width: 100%;
     font-size: $inputDefaultSize;
     color: $textSecundaryColor;
     font-family: $fontText;
@@ -23,6 +24,9 @@
     position: absolute;
     top: 12px;
     left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__writter {
@@ -33,5 +37,18 @@
     font-size: $inputDefaultSize;
     color: $textPrimaryColor;
     padding: 10px 5px;
+  }
+
+  &__big {
+    &__placeHolder {
+      font-size: $inputBigSize;
+      font-weight: bold;
+      top: 14px;
+    }
+
+    &__writter {
+      font-size: $inputBigSize;
+      font-weight: bold;
+    }
   }
 }

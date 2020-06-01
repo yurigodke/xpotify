@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 import style from "./index.scss";
 
@@ -20,6 +21,16 @@ class Input extends PureComponent {
     });
   };
 
+  getStyleModifier = className => {
+    const { mode } = this.props;
+
+    const modifierStyle = classNames(style[`input__${className}`], {
+      [style[`input__big__${className}`]]: mode === "big"
+    });
+
+    return modifierStyle;
+  };
+
   render() {
     const { title, type, name, placeHolder, className } = this.props;
     const { value } = this.state;
@@ -30,15 +41,18 @@ class Input extends PureComponent {
 
     const placeHolderElm =
       placeHolder && value === "" ? (
-        <div className={style["input__placeHolder"]}>{placeHolder}</div>
+        <div className={this.getStyleModifier("placeHolder")}>
+          {placeHolder}
+        </div>
       ) : null;
+
     return (
       <div className={className}>
         {titleElm}
         <label className={style["input"]}>
           {placeHolderElm}
           <input
-            className={style["input__writter"]}
+            className={this.getStyleModifier("writter")}
             type={type}
             name={name}
             value={value}

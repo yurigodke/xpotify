@@ -40,16 +40,16 @@ describe("<Guide />", () => {
     };
     const wrapper = shallow(<Guide {...guideProps} />);
 
+    console.log(wrapper.find(".guide__main"));
+
     expect(wrapper.find(".guide").exists()).toBeTruthy();
     expect(wrapper.find(".guide__main").exists()).toBeTruthy();
     expect(
       wrapper.find(".guide__main").hasClass("guide__main__center")
     ).toBeFalsy();
-    expect(wrapper.find(".guide__main__bar").exists()).toBeTruthy();
-    expect(wrapper.find(".guide__main__content").exists()).toBeTruthy();
     expect(
       wrapper
-        .find(".guide__main__bar")
+        .find(".guide__main")
         .children()
         .html()
     ).toEqual("<div>bar</div>");
