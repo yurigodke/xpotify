@@ -1,0 +1,43 @@
+@import "~Misc/variables.scss";
+
+.trackItem {
+  $this: &;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &__number,
+  &__name,
+  &__duration {
+    font-family: $fontText;
+    font-size: $inputSmallSize;
+    color: $textPrimaryColor;
+    line-height: 160%;
+    text-align: left;
+    white-space: normal;
+  }
+
+  &__number,
+  &__duration {
+    color: $textSecundaryColor;
+  }
+
+  &__number {
+    width: 30px;
+  }
+
+  &__name {
+    flex: 1;
+  }
+
+  &:hover {
+    background: #fff;
+
+    #{$this}__name {
+      color: $boxBackgroundColor;
+    }
+  }
+}

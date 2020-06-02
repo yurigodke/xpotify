@@ -1,0 +1,31 @@
+@import "~Misc/variables.scss";
+
+.albumCover {
+  width: 350px;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+
+  &__image {
+    width: 350px;
+    height: 350px;
+    background: $imageBackgroundColor;
+    margin: 0 10px;
+  }
+
+  &__title,
+  &__subtitle {
+    font-family: $fontText;
+    font-size: $inputSmallSize;
+    color: $textPrimaryColor;
+    line-height: 160%;
+    margin: 10px 5px 0;
+    text-align: center;
+    white-space: normal;
+  }
+
+  &__subtitle {
+    color: $textSecundaryColor;
+  }
+}
