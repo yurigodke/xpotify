@@ -14,11 +14,16 @@ class Input extends PureComponent {
   }
 
   setValue = e => {
+    const { getValue } = this.props;
     const value = e.target.value;
 
     this.setState({
       value
     });
+
+    if (getValue) {
+      getValue(value);
+    }
   };
 
   getStyleModifier = className => {
@@ -69,7 +74,8 @@ Input.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   placeHolder: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  getValue: PropTypes.func
 };
 
 Input.defaultProps = {

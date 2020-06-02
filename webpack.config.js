@@ -49,7 +49,8 @@ module.exports = {
       Components: path.resolve(__dirname, "components/"),
       Modules: path.resolve(__dirname, "modules/"),
       Pages: path.resolve(__dirname, "pages/"),
-      Misc: path.resolve(__dirname, "misc/")
+      Misc: path.resolve(__dirname, "misc/"),
+      Actions: path.resolve(__dirname, "redux/actions")
     }
   }
 };

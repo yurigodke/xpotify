@@ -10,7 +10,7 @@ import rootReducer from "./reducers";
 const persistConfig = {
   key: "userData",
   storage,
-  whitelist: [] // TODO: Colocar reducer a serem persistidos
+  whitelist: ["login"] // TODO: Colocar reducer a serem persistidos
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

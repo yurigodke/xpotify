@@ -1,3 +1,3 @@
-const actions = {};
+import login from "./login";
 
-export default actions;
+export default { login };

@@ -1,19 +1,32 @@
 class API {
-  constructor(token = null) {
-    this.token = token;
-    this.baseUrl = "https://accounts.spotify.com/api/";
+  constructor(token = null, type = "Bearer") {
+    this.baseUrl = "https://accounts.spotify.com/api";
 
     this.headers = {
-      "Content-Type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded"
     };
 
-    if (this.token) {
-      this.setBearerAuth();
+    if (token) {
+      if (type == "Bearer") {
+        this.setBearerAuth(token);
+      } else if (type == "Basic") {
+        this.setBasicAuth(token);
+      }
     }
   }
 
   setBearerAuth() {
-    this.headers["Authorization"] = "Bearer " + this.token;
+    this.headers["Authorization"] = "Bearer " + token;
+  }
+
+  setBasicAuth(token) {
+    this.headers["Authorization"] = "Basic " + token;
+  }
+
+  getBody(data) {
+    const searchParams = new URLSearchParams(data);
+
+    return searchParams;
   }
 
   async post(path, data = null) {
@@ -22,7 +35,7 @@ class API {
       headers: this.headers,
       redirect: "follow",
       referrer: "no-referrer",
-      body: JSON.stringify(data)
+      body: this.getBody(data)
     });
 
     const jsonResponse = await response.json();
