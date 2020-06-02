@@ -6,28 +6,24 @@ import style from "./index.scss";
 
 import { Input, Button } from "Components";
 
-function FormLogin({}) {
+function FormLogin({ spotifyLogin }) {
   return (
     <div className={style["formLogin"]}>
       <Input
         className={style["formLogin__input"]}
-        title="Email"
-        name="email"
-        type="email"
-        placeHolder="Digite seu e-mail"
-      />
-      <Input
-        className={style["formLogin__input"]}
-        title="Senha"
-        email="password"
-        type="password"
-        placeHolder="Digite sua senha"
+        title="Token"
+        name="token"
+        placeHolder="Digite seu token"
       />
       <Button>Entrar</Button>
+      <hr className={style["formLogin__orBar"]} />
+      <Button action={spotifyLogin}>Entrar com Spotify</Button>
     </div>
   );
 }
 
-FormLogin.propTypes = {};
+FormLogin.propTypes = {
+  spotifyLogin: PropTypes.func
+};
 
 export default FormLogin;
