@@ -1,0 +1,25 @@
+@import "~Misc/variables.scss";
+
+.button {
+  border: none;
+  box-sizing: border-box;
+  background: none;
+  color: $textSecundaryColor;
+  cursor: pointer;
+
+  &__play {
+    border: 1px solid $textSecundaryColor;
+    padding: 15px;
+    border-radius: 100%;
+    margin: 0 20px;
+  }
+
+  &__next,
+  &__back {
+    padding: 10px;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}

@@ -1,0 +1,21 @@
+@import "~Misc/variables.scss";
+
+.player {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 0;
+  border-top: 1px #000 solid;
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  &__timeline {
+    width: 80%;
+  }
+}
