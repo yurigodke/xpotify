@@ -6,7 +6,7 @@ import style from "./index.scss";
 
 import { AlbumThumb } from "Components";
 
-function AlbumList({ title, data, type = "scroll" }) {
+function AlbumList({ title, data, type = "scroll", onSelection = () => {} }) {
   let albumsItens = null;
   if (data) {
     albumsItens = data.albums.items.map(item => {
@@ -16,6 +16,7 @@ function AlbumList({ title, data, type = "scroll" }) {
           image={item.images[1].url}
           title={item.name}
           subtitle={item.artists[0].name}
+          onClick={() => onSelection(item.id)}
         />
       );
     });
@@ -35,7 +36,8 @@ function AlbumList({ title, data, type = "scroll" }) {
 AlbumList.propTypes = {
   title: PropTypes.string,
   data: PropTypes.object,
-  type: PropTypes.string
+  type: PropTypes.string,
+  onSelection: PropTypes.func
 };
 
 export default AlbumList;

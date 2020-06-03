@@ -42,6 +42,12 @@ class Home extends PureComponent {
     this.props.searchTerm(term);
   };
 
+  go2Album = albumId => {
+    const { history } = this.props;
+
+    history.push(`/detail/${albumId}`);
+  };
+
   render() {
     const { searchList, newRelease, searchName } = this.props;
 
@@ -49,6 +55,7 @@ class Home extends PureComponent {
       <AlbumList
         title={`Resultados encontrados para "${searchName}"`}
         data={searchList}
+        onSelection={this.go2Album}
       />
     ) : null;
     const guideElements = {
@@ -61,7 +68,12 @@ class Home extends PureComponent {
         <div className={style["home__content"]}>
           <Search getTerm={this.getSearchList} />
           {searchListElm}
-          <AlbumList type="noscroll" title="Lançamentos" data={newRelease} />
+          <AlbumList
+            type="noscroll"
+            title="Lançamentos"
+            data={newRelease}
+            onSelection={this.go2Album}
+          />
         </div>
       )
     };

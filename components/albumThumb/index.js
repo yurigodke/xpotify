@@ -5,10 +5,10 @@ import style from "./index.scss";
 
 class AlbumThumb extends PureComponent {
   render() {
-    const { title, subtitle, image } = this.props;
+    const { title, subtitle, image, onClick } = this.props;
 
     return (
-      <div className={style["albumThumb"]}>
+      <div className={style["albumThumb"]} onClick={onClick}>
         <div className={style["albumThumb__image"]}>
           <img
             className={style["albumThumb__image__item"]}
@@ -26,7 +26,8 @@ class AlbumThumb extends PureComponent {
 AlbumThumb.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  image: PropTypes.string
+  image: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default AlbumThumb;
