@@ -6,7 +6,7 @@ import style from "./index.scss";
 
 import { Input } from "Components";
 
-function Search({}) {
+function Search({ getTerm = () => {} }) {
   return (
     <div className={style["search"]}>
       <Input
@@ -15,11 +15,14 @@ function Search({}) {
         name="search"
         mode="big"
         placeHolder="Comece a escrever…"
+        getValue={term => getTerm(term)}
       />
     </div>
   );
 }
 
-Search.propTypes = {};
+Search.propTypes = {
+  getTerm: PropTypes.func
+};
 
 export default Search;

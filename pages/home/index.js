@@ -38,7 +38,19 @@ class Home extends PureComponent {
     this.props.clearToken();
   };
 
+  getSearchList = term => {
+    this.props.searchTerm(term);
+  };
+
   render() {
+    const { searchList, newRelease, searchName } = this.props;
+
+    const searchListElm = searchList ? (
+      <AlbumList
+        title={`Resultados encontrados para "${searchName}"`}
+        data={searchList}
+      />
+    ) : null;
     const guideElements = {
       bar: (
         <div>
@@ -47,12 +59,9 @@ class Home extends PureComponent {
       ),
       content: (
         <div className={style["home__content"]}>
-          <Search />
-          <AlbumList
-            type="noscroll"
-            title="Lançamentos"
-            data={this.props.newRelease}
-          />
+          <Search getTerm={this.getSearchList} />
+          {searchListElm}
+          <AlbumList type="noscroll" title="Lançamentos" data={newRelease} />
         </div>
       )
     };
@@ -63,12 +72,17 @@ class Home extends PureComponent {
 const mapStateToProps = state => {
   return {
     tokenData: state.login.tokenData,
-    newRelease: state.newRelease.data
+    newRelease: state.newRelease.data,
+    searchList: state.search.list,
+    searchName: state.search.name
   };
 };
 
 const mapDisptachToProps = dispatch =>
-  bindActionCreators({ ...actions.login, ...actions.newRelease }, dispatch);
+  bindActionCreators(
+    { ...actions.login, ...actions.newRelease, ...actions.search },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,
