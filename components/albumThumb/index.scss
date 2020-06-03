@@ -16,6 +16,11 @@
     height: 180px;
     background: $imageBackgroundColor;
     margin: 0 10px;
+
+    &__item {
+      width: 180px;
+      height: 180px;
+    }
   }
 
   &__title,
