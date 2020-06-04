@@ -34,10 +34,6 @@ class Home extends PureComponent {
     }
   };
 
-  logout = () => {
-    this.props.clearToken();
-  };
-
   getSearchList = term => {
     this.props.searchTerm(term);
   };
