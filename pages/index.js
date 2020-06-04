@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, useLocation } from "react-router-dom";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -10,25 +10,39 @@ import Detail from "./detail";
 
 import { Guide, Bar, Player } from "Modules";
 
-import actions from "Actions";
+const RouteSwitch = () => {
+  const location = useLocation();
 
-function App() {
+  const guideParams =
+    location.pathname != "/login"
+      ? {
+          bar: <Bar />,
+          bottom: <Player />
+        }
+      : null;
+
   return (
-    <Guide bar={<Bar />} bottom={<Player />}>
-      <Router>
-        <>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/detail/:albumId">
-            <Detail />
-          </Route>
-        </>
-      </Router>
+    <Guide {...guideParams}>
+      <>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/detail/:albumId">
+          <Detail />
+        </Route>
+      </>
     </Guide>
+  );
+};
+
+function App(a) {
+  return (
+    <Router>
+      <RouteSwitch />
+    </Router>
   );
 }
 
