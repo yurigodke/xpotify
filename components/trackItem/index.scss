@@ -33,8 +33,9 @@
     flex: 1;
   }
 
+  &-active,
   &:hover {
-    background: #fff;
+    background: $textPrimaryColor;
 
     #{$this}__name {
       color: $boxBackgroundColor;

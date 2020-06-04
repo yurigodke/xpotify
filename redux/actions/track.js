@@ -49,6 +49,58 @@ const getTrackInfo = trackId => async (dispatch, getState) => {
   }
 };
 
+const getCloseTracks = getState => {
+  const reduxState = getState();
+
+  const albumTrackList =
+    reduxState.album.data && reduxState.album.data.tracks
+      ? reduxState.album.data.tracks.items
+      : [];
+  const currentTrack = reduxState.track.item.id || null;
+
+  let closeTracks = {};
+
+  if (currentTrack) {
+    const totalTracks = albumTrackList.length;
+
+    for (let index in albumTrackList) {
+      if (albumTrackList[index].id === currentTrack) {
+        const prevIndexTemp = Number(index) - 1;
+        const prevIndex = prevIndexTemp < 0 ? totalTracks - 1 : prevIndexTemp;
+
+        const nextIndexTemp = Number(index) + 1;
+        const nextIndex = nextIndexTemp >= totalTracks ? 0 : nextIndexTemp;
+
+        closeTracks = {
+          prevId: albumTrackList[prevIndex].id,
+          nextId: albumTrackList[nextIndex].id
+        };
+        break;
+      }
+    }
+  }
+
+  return closeTracks;
+};
+
+const setNextTrack = () => (dispatch, getState) => {
+  const closeTracks = getCloseTracks(getState);
+
+  if (closeTracks.nextId) {
+    dispatch(getTrackInfo(closeTracks.nextId));
+  }
+};
+
+const setPrevTrack = () => (dispatch, getState) => {
+  const closeTracks = getCloseTracks(getState);
+
+  if (closeTracks.prevId) {
+    dispatch(getTrackInfo(closeTracks.prevId));
+  }
+};
+
 export default {
-  getTrackInfo
+  getTrackInfo,
+  setNextTrack,
+  setPrevTrack
 };

@@ -9,6 +9,8 @@ import style from "./index.scss";
 
 import { PlayerButton, Timeline } from "Components";
 
+import actions from "Actions";
+
 class Player extends PureComponent {
   constructor(props) {
     super(props);
@@ -24,12 +26,12 @@ class Player extends PureComponent {
   }
 
   componentDidMount() {
-    this.audio.addEventListener("ended", this.pause);
+    this.audio.addEventListener("ended", this.next);
     this.audio.addEventListener("timeupdate", this.timeupdate);
   }
 
   componentWillUnmount() {
-    this.audio.removeEventListener("ended", this.pause);
+    this.audio.removeEventListener("ended", this.next);
     this.audio.removeEventListener("timeupdate", this.timeupdate);
   }
 
@@ -64,10 +66,22 @@ class Player extends PureComponent {
   };
 
   play = () => {
-    this.audio.play();
-    this.setState({
-      playerOn: true
-    });
+    if (this.audio.src) {
+      this.audio.play();
+      this.setState({
+        playerOn: true
+      });
+    }
+  };
+
+  next = () => {
+    this.pause();
+    this.props.setNextTrack();
+  };
+
+  prev = () => {
+    this.pause();
+    this.props.setPrevTrack();
   };
 
   render() {
@@ -81,13 +95,13 @@ class Player extends PureComponent {
       <div className={style["player"]}>
         <div className={style["player__controls"]}>
           <div className={style["player__controls__back"]}>
-            <PlayerButton type="back" />
+            <PlayerButton type="back" action={this.prev} />
           </div>
           <div className={style["player__controls__main"]}>
             <PlayerButton type={mainButtonType} action={mainButtonAction} />
           </div>
           <div className={style["player__controls__next"]}>
-            <PlayerButton type="next" />
+            <PlayerButton type="next" action={this.next} />
           </div>
         </div>
         <div className={style["player__timeline"]}>
@@ -104,7 +118,8 @@ const mapStateToProps = state => {
   return { currentTrack: state.track.item };
 };
 
-const mapDisptachToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDisptachToProps = dispatch =>
+  bindActionCreators({ ...actions.track }, dispatch);
 
 export default connect(
   mapStateToProps,

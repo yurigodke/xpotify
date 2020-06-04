@@ -48,13 +48,14 @@ class Detail extends PureComponent {
   };
 
   render() {
-    const { albumData, getTrackInfo } = this.props;
+    const { albumData, getTrackInfo, currentTrack } = this.props;
 
     return (
       <AlbumDetail
         data={albumData}
         backAction={this.go2Home}
         selectAction={getTrackInfo}
+        currentTrack={currentTrack}
       />
     );
   }
@@ -63,7 +64,8 @@ class Detail extends PureComponent {
 const mapStateToProps = state => {
   return {
     tokenData: state.login.tokenData,
-    albumData: state.album.data
+    albumData: state.album.data,
+    currentTrack: state.track.item
   };
 };
 

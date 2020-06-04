@@ -6,13 +6,19 @@ import style from "./index.scss";
 
 class Timeline extends PureComponent {
   formatTime = time => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+    let timeFormated = "00:00";
 
-    const minutesStr = minutes.toString().padStart(2, "0");
-    const secondsStr = seconds.toString().padStart(2, "0");
+    if (time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
 
-    return `${minutesStr}:${secondsStr}`;
+      const minutesStr = minutes.toString().padStart(2, "0");
+      const secondsStr = seconds.toString().padStart(2, "0");
+
+      timeFormated = `${minutesStr}:${secondsStr}`;
+    }
+
+    return timeFormated;
   };
 
   render() {
