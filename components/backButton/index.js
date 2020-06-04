@@ -5,14 +5,19 @@ import style from "./index.scss";
 
 class Button extends PureComponent {
   render() {
-    const { children } = this.props;
+    const { children, action } = this.props;
 
-    return <button className={style["button"]}>{children}</button>;
+    return (
+      <button className={style["button"]} onClick={action}>
+        {children}
+      </button>
+    );
   }
 }
 
 Button.propTypes = {
-  children: PropTypes.string
+  children: PropTypes.string,
+  action: PropTypes.func
 };
 
 export default Button;

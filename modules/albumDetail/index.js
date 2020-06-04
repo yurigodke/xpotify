@@ -6,27 +6,59 @@ import style from "./index.scss";
 
 import { BackButton, AlbumCover, TrackItem } from "Components";
 
-function AlbumDetail({ title, type = "scroll" }) {
+function AlbumDetail({ data, backAction }) {
+  let trackListElm = null;
+
+  const formatDuration = msDuration => {
+    const durationSeconds = Math.round(msDuration / 1000);
+
+    const minutes = Math.floor(durationSeconds / 60).toString();
+    const seconds = (durationSeconds % 60).toString().padStart(2, "0");
+
+    return `${minutes}:${seconds}`;
+  };
+
+  if (data.tracks) {
+    trackListElm = data.tracks.items.map(item => {
+      return (
+        <TrackItem
+          key={item.id}
+          number={item.track_number}
+          name={item.name}
+          duration={formatDuration(item.duration_ms)}
+        />
+      );
+    });
+  }
+
+  const contentElm = data.id ? (
+    <div className={style["albumDetail__content"]}>
+      <div className={style["albumDetail__content__cover"]}>
+        <AlbumCover
+          title={data.name}
+          subtitle={data.artists[0].name}
+          image={data.images[0].url}
+        />
+      </div>
+      <div className={style["albumDetail__content__trackList"]}>
+        {trackListElm}
+      </div>
+    </div>
+  ) : null;
+
   return (
     <div className={style["albumDetail"]}>
       <div className={style["albumDetail__top"]}>
-        <BackButton>Voltar</BackButton>
+        <BackButton action={backAction}>Voltar</BackButton>
       </div>
-      <div className={style["albumDetail__content"]}>
-        <div className={style["albumDetail__content__cover"]}>
-          <AlbumCover title="Album cover" subtitle="AlbumCoverSubtitle" />
-        </div>
-        <div className={style["albumDetail__content__trackList"]}>
-          <TrackItem number={1} name="Test track" duration="2:39" />
-          <TrackItem number={2} name="Test track" duration="2:39" />
-          <TrackItem number={3} name="Test track" duration="2:39" />
-          <TrackItem number={4} name="Test track" duration="2:39" />
-        </div>
-      </div>
+      {contentElm}
     </div>
   );
 }
 
-AlbumDetail.propTypes = {};
+AlbumDetail.propTypes = {
+  data: PropTypes.object,
+  backAction: PropTypes.func
+};
 
 export default AlbumDetail;
