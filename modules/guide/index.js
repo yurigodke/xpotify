@@ -25,14 +25,10 @@ function Guide({ bar, children, bottom }) {
     mainContent = <div className={mainStyle}>{children}</div>;
   }
 
-  const bottomContent = bottom ? (
-    <div className={style["guide__bottom"]}>{bottom}</div>
-  ) : null;
-
   return (
     <div className={style["guide"]}>
       {mainContent}
-      {bottomContent}
+      <div className={style["guide__bottom"]}>{bottom}</div>
     </div>
   );
 }

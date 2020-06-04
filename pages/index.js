@@ -1,35 +1,34 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
 import Home from "./home";
 import Login from "./login";
 import Detail from "./detail";
 
 import { Guide, Bar, Player } from "Modules";
 
+import actions from "Actions";
+
 function App() {
-  const barElm = <Bar />;
-  const barPlayer = <Player />;
   return (
-    <Router>
-      <>
-        <Route exact path="/">
-          <Guide bar={barElm} bottom={barPlayer}>
+    <Guide bar={<Bar />} bottom={<Player />}>
+      <Router>
+        <>
+          <Route exact path="/">
             <Home />
-          </Guide>
-        </Route>
-        <Route path="/login">
-          <Guide>
+          </Route>
+          <Route path="/login">
             <Login />
-          </Guide>
-        </Route>
-        <Route path="/detail/:albumId">
-          <Guide bar={barElm} bottom={barPlayer}>
+          </Route>
+          <Route path="/detail/:albumId">
             <Detail />
-          </Guide>
-        </Route>
-      </>
-    </Router>
+          </Route>
+        </>
+      </Router>
+    </Guide>
   );
 }
 

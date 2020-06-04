@@ -6,27 +6,29 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faStepForward,
   faStepBackward,
-  faPlay
+  faPlay,
+  faPause
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add([faStepForward, faStepBackward, faPlay]);
+library.add([faStepForward, faStepBackward, faPlay, faPause]);
 
 import style from "./index.scss";
 
 class PlayerButton extends PureComponent {
   render() {
-    const { type } = this.props;
+    const { type, action } = this.props;
 
     const iconsNames = {
       back: "step-backward",
       next: "step-forward",
-      play: "play"
+      play: "play",
+      pause: "pause"
     };
 
     const buttonStyle = classNames(style["button"], style[`button__${type}`]);
 
     return (
-      <div className={buttonStyle}>
+      <div className={buttonStyle} onClick={action}>
         <FontAwesomeIcon icon={iconsNames[type]} />
       </div>
     );
@@ -34,7 +36,8 @@ class PlayerButton extends PureComponent {
 }
 
 PlayerButton.propTypes = {
-  type: PropTypes.string
+  type: PropTypes.string,
+  action: PropTypes.func
 };
 
 export default PlayerButton;

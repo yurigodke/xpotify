@@ -6,7 +6,7 @@ import style from "./index.scss";
 
 import { BackButton, AlbumCover, TrackItem } from "Components";
 
-function AlbumDetail({ data, backAction }) {
+function AlbumDetail({ data, backAction, selectAction }) {
   let trackListElm = null;
 
   const formatDuration = msDuration => {
@@ -26,6 +26,7 @@ function AlbumDetail({ data, backAction }) {
           number={item.track_number}
           name={item.name}
           duration={formatDuration(item.duration_ms)}
+          action={() => selectAction(item.id)}
         />
       );
     });
@@ -58,7 +59,8 @@ function AlbumDetail({ data, backAction }) {
 
 AlbumDetail.propTypes = {
   data: PropTypes.object,
-  backAction: PropTypes.func
+  backAction: PropTypes.func,
+  selectAction: PropTypes.func
 };
 
 export default AlbumDetail;

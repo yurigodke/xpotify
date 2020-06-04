@@ -48,9 +48,15 @@ class Detail extends PureComponent {
   };
 
   render() {
-    const { albumData } = this.props;
+    const { albumData, getTrackInfo } = this.props;
 
-    return <AlbumDetail data={albumData} backAction={this.go2Home} />;
+    return (
+      <AlbumDetail
+        data={albumData}
+        backAction={this.go2Home}
+        selectAction={getTrackInfo}
+      />
+    );
   }
 }
 
@@ -62,7 +68,7 @@ const mapStateToProps = state => {
 };
 
 const mapDisptachToProps = dispatch =>
-  bindActionCreators({ ...actions.album }, dispatch);
+  bindActionCreators({ ...actions.album, ...actions.track }, dispatch);
 
 export default connect(
   mapStateToProps,

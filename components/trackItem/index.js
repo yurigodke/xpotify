@@ -5,10 +5,10 @@ import style from "./index.scss";
 
 class TrackItem extends PureComponent {
   render() {
-    const { number, name, duration } = this.props;
+    const { number, name, duration, action } = this.props;
 
     return (
-      <div className={style["trackItem"]}>
+      <div className={style["trackItem"]} onClick={action}>
         <div className={style["trackItem__number"]}>{number}.</div>
         <div className={style["trackItem__name"]}>{name}</div>
         <div className={style["trackItem__duration"]}>{duration}</div>
@@ -20,7 +20,8 @@ class TrackItem extends PureComponent {
 TrackItem.propTypes = {
   number: PropTypes.number,
   name: PropTypes.string,
-  duration: PropTypes.string
+  duration: PropTypes.string,
+  action: PropTypes.func
 };
 
 export default TrackItem;
