@@ -3,17 +3,27 @@
 .player {
   display: flex;
   align-items: center;
-  flex-direction: column;
   width: 100%;
   box-sizing: border-box;
 
-  &__controls {
+  &__main {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    flex-direction: column;
+    flex: 1;
+
+    &__controls {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    &__timeline {
+      width: 80%;
+    }
   }
 
-  &__timeline {
-    width: 80%;
+  &__null {
+    width: 250px;
   }
 }

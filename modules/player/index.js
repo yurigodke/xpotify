@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 import style from "./index.scss";
 
-import { PlayerButton, Timeline } from "Components";
+import { PlayerButton, Timeline, AlbumProfile } from "Components";
 
 import actions from "Actions";
 
@@ -91,22 +91,37 @@ class Player extends PureComponent {
     const mainButtonType = playerOn ? "pause" : "play";
     const mainButtonAction = playerOn ? this.pause : this.play;
 
+    const albumProfile = currentTrack.id ? (
+      <AlbumProfile
+        image={currentTrack.album.images[2].url}
+        title={currentTrack.name}
+        subtitle={currentTrack.artists[0].name}
+      />
+    ) : null;
+    const nullElm = currentTrack.id ? (
+      <div className={style["player__null"]} />
+    ) : null;
+
     return (
       <div className={style["player"]}>
-        <div className={style["player__controls"]}>
-          <div className={style["player__controls__back"]}>
-            <PlayerButton type="back" action={this.prev} />
+        {albumProfile}
+        <div className={style["player__main"]}>
+          <div className={style["player__main__controls"]}>
+            <div className={style["player__main__controls__back"]}>
+              <PlayerButton type="back" action={this.prev} />
+            </div>
+            <div className={style["player__main__controls__main"]}>
+              <PlayerButton type={mainButtonType} action={mainButtonAction} />
+            </div>
+            <div className={style["player__main__controls__next"]}>
+              <PlayerButton type="next" action={this.next} />
+            </div>
           </div>
-          <div className={style["player__controls__main"]}>
-            <PlayerButton type={mainButtonType} action={mainButtonAction} />
-          </div>
-          <div className={style["player__controls__next"]}>
-            <PlayerButton type="next" action={this.next} />
+          <div className={style["player__main__timeline"]}>
+            <Timeline time={currentTime} total={duration} />
           </div>
         </div>
-        <div className={style["player__timeline"]}>
-          <Timeline time={currentTime} total={duration} />
-        </div>
+        {nullElm}
       </div>
     );
   }

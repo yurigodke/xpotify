@@ -1,0 +1,40 @@
+@import "~Misc/variables.scss";
+
+.albumThumb {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 0 0 20px;
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    background: $imageBackgroundColor;
+
+    &__item {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__text {
+    overflow: hidden;
+
+    &__title,
+    &__subtitle {
+      font-family: $fontText;
+      font-size: $inputSmallSize;
+      color: $textPrimaryColor;
+      line-height: 120%;
+      margin: 5px 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &__subtitle {
+      color: $textSecundaryColor;
+    }
+  }
+}

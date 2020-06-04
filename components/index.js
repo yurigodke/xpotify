@@ -6,6 +6,7 @@ import AlbumCover from "./albumCover";
 import TrackItem from "./trackItem";
 import PlayerButton from "./playerButton";
 import Timeline from "./timeline";
+import AlbumProfile from "./albumProfile";
 
 export {
   Input,
@@ -15,5 +16,6 @@ export {
   AlbumCover,
   TrackItem,
   PlayerButton,
-  Timeline
+  Timeline,
+  AlbumProfile
 };
