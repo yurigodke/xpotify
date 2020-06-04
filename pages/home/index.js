@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { Guide, Search, AlbumList } from "Modules";
+import { Search, AlbumList } from "Modules";
 
 import actions from "Actions";
 
@@ -58,26 +58,19 @@ class Home extends PureComponent {
         onSelection={this.go2Album}
       />
     ) : null;
-    const guideElements = {
-      bar: (
-        <div>
-          Logo<button onClick={this.logout}>Sair</button>
-        </div>
-      ),
-      content: (
-        <div className={style["home__content"]}>
-          <Search getTerm={this.getSearchList} />
-          {searchListElm}
-          <AlbumList
-            type="noscroll"
-            title="Lançamentos"
-            data={newRelease}
-            onSelection={this.go2Album}
-          />
-        </div>
-      )
-    };
-    return <Guide {...guideElements} />;
+
+    return (
+      <div className={style["home__content"]}>
+        <Search getTerm={this.getSearchList} />
+        {searchListElm}
+        <AlbumList
+          type="noscroll"
+          title="Lançamentos"
+          data={newRelease}
+          onSelection={this.go2Album}
+        />
+      </div>
+    );
   }
 }
 

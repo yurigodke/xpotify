@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { Guide, FormLogin } from "Modules";
+import { FormLogin } from "Modules";
 
 import actions from "Actions";
 
@@ -65,15 +65,12 @@ class Login extends PureComponent {
   };
 
   render() {
-    const guideElements = {
-      content: (
-        <FormLogin
-          spotifyLogin={this.spotifyLogin}
-          setInputToken={this.setInputToken}
-        />
-      )
-    };
-    return <Guide {...guideElements} />;
+    return (
+      <FormLogin
+        spotifyLogin={this.spotifyLogin}
+        setInputToken={this.setInputToken}
+      />
+    );
   }
 }
 

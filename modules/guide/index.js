@@ -4,27 +4,25 @@ import classNames from "classnames";
 
 import style from "./index.scss";
 
-function Guide({ bar, content, bottom }) {
+function Guide({ bar, children, bottom }) {
   let mainContent = null;
 
-  if (bar && content) {
+  if (bar && children) {
+    const mainStyle = bottom
+      ? classNames(style["guide__main"], style["guide__main__w-bottom"])
+      : style["guide__main"];
     mainContent = (
-      <div className={style["guide__main"]}>
+      <div className={mainStyle}>
         <div className={style["guide__main__bar"]}>{bar}</div>
-        <div className={style["guide__main__content"]}>{content}</div>
+        <div className={style["guide__main__content"]}>{children}</div>
       </div>
     );
-  } else if (content) {
-    mainContent = (
-      <div
-        className={classNames(
-          style["guide__main"],
-          style["guide__main__center"]
-        )}
-      >
-        {content}
-      </div>
+  } else if (children) {
+    const mainStyle = classNames(
+      style["guide__main"],
+      style["guide__main__center"]
     );
+    mainContent = <div className={mainStyle}>{children}</div>;
   }
 
   const bottomContent = bottom ? (
@@ -41,7 +39,7 @@ function Guide({ bar, content, bottom }) {
 
 Guide.propTypes = {
   bar: PropTypes.element,
-  content: PropTypes.element,
+  children: PropTypes.element,
   bottom: PropTypes.element
 };
 

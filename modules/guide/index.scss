@@ -14,6 +14,10 @@
     justify-content: space-between;
     height: 100%;
 
+    &__w-bottom {
+      height: calc(100% - 120px);
+    }
+
     &__center {
       justify-content: center;
     }
@@ -25,5 +29,12 @@
     &__content {
       width: 95%;
     }
+  }
+
+  &__bottom {
+    display: flex;
+    border-top: 1px #000 solid;
+    height: 120px;
+    align-items: center;
   }
 }

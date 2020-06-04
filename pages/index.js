@@ -5,18 +5,28 @@ import Home from "./home";
 import Login from "./login";
 import Detail from "./detail";
 
+import { Guide, Bar, Player } from "Modules";
+
 function App() {
+  const barElm = <Bar />;
+  const barPlayer = <Player />;
   return (
     <Router>
       <>
         <Route exact path="/">
-          <Home />
+          <Guide bar={barElm} bottom={barPlayer}>
+            <Home />
+          </Guide>
         </Route>
         <Route path="/login">
-          <Login />
+          <Guide>
+            <Login />
+          </Guide>
         </Route>
         <Route path="/detail/:albumId">
-          <Detail />
+          <Guide bar={barElm} bottom={barPlayer}>
+            <Detail />
+          </Guide>
         </Route>
       </>
     </Router>

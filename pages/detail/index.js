@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { Guide, Search, AlbumDetail, Player } from "Modules";
+import { Search, AlbumDetail, Player } from "Modules";
 
 import style from "./index.scss";
 
@@ -50,12 +50,7 @@ class Detail extends PureComponent {
   render() {
     const { albumData } = this.props;
 
-    const guideElements = {
-      bar: <div>Logo</div>,
-      content: <AlbumDetail data={albumData} backAction={this.go2Home} />,
-      bottom: <Player />
-    };
-    return <Guide {...guideElements} />;
+    return <AlbumDetail data={albumData} backAction={this.go2Home} />;
   }
 }
 
