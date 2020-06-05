@@ -2,7 +2,7 @@ import { SETACCESSTOKEN, SETACCESSTOKENERROR } from "../constants.js";
 
 import { combineReducers } from "redux";
 
-const tokenData = (state = null, { type, payload }) => {
+const tokenData = (state = {}, { type, payload }) => {
   switch (type) {
     case SETACCESSTOKEN:
     case SETACCESSTOKENERROR:

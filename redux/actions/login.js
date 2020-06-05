@@ -31,7 +31,7 @@ const getAccessToken = code => async (dispatch, getState) => {
   } else {
     dispatch({
       type: SETACCESSTOKENERROR,
-      payload: null
+      payload: {}
     });
   }
 };
