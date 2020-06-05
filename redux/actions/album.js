@@ -1,4 +1,10 @@
-import { LOADING, SETALBUMDETAIL, SETALBUMDETAILERROR } from "../constants.js";
+import {
+  LOADING,
+  SETALBUMDETAIL,
+  SETALBUMDETAILERROR,
+  SETALBUMLIST,
+  SETALBUMLISTERROR
+} from "../constants.js";
 import API from "../api";
 import Utils from "../api/utils";
 
@@ -14,25 +20,36 @@ const getAlbumData = albumId => async (dispatch, getState) => {
     ? reduxState.login.tokenData.access_token
     : null;
 
-  const api = new API(token);
-  const utils = new Utils({ dispatch, reduxState });
-
-  const response = await api.get(`/albums/${albumId}`);
-
-  if (response.status === 200) {
+  if (reduxState.album.list[albumId]) {
     dispatch({
       type: SETALBUMDETAIL,
-      payload: response.data
+      payload: reduxState.album.list[albumId]
     });
   } else {
-    utils.refreshCheck(
-      response,
-      {
-        type: SETALBUMDETAILERROR,
-        payload: {}
-      },
-      getAlbumData(albumId)
-    );
+    const api = new API(token);
+    const utils = new Utils({ dispatch, reduxState });
+
+    const response = await api.get(`/albums/${albumId}`);
+
+    if (response.status === 200) {
+      dispatch({
+        type: SETALBUMLIST,
+        payload: response.data
+      });
+      dispatch({
+        type: SETALBUMDETAIL,
+        payload: response.data
+      });
+    } else {
+      utils.refreshCheck(
+        response,
+        {
+          type: SETALBUMDETAILERROR,
+          payload: {}
+        },
+        getAlbumData(albumId)
+      );
+    }
   }
 };
 
