@@ -10,11 +10,7 @@ class AlbumCover extends PureComponent {
     return (
       <div className={style["albumCover"]}>
         <div className={style["albumCover__image"]}>
-          <img
-            className={style["albumCover__image__item"]}
-            src={image}
-            alt=""
-          />
+          <img className={style["albumCover__image__item"]} src={image} />
         </div>
         <div className={style["albumCover__title"]}>{title}</div>
         <div className={style["albumCover__subtitle"]}>{subtitle}</div>
@@ -24,9 +20,9 @@ class AlbumCover extends PureComponent {
 }
 
 AlbumCover.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  image: PropTypes.string
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
 };
 
 export default AlbumCover;

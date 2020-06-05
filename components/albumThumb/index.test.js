@@ -2,12 +2,44 @@ import React from "react";
 
 import { shallow } from "enzyme";
 
-import Button from "./index";
+import AlbumThumb from "./index";
 
-describe("<Button />", () => {
+describe("<AlbumThumb />", () => {
   it("Render default element", () => {
-    const wrapper = shallow(<Button />);
+    const params = {
+      image: "http://www.url.image/test.jpg",
+      title: "Album title",
+      subtitle: "Album subtitle"
+    };
+    const wrapper = shallow(<AlbumThumb {...params} />);
 
-    expect(wrapper.find(".button").exists()).toBeTruthy();
+    expect(
+      wrapper.find(".albumThumb__image .albumThumb__image__item").prop("src")
+    ).toEqual(params.image);
+    expect(wrapper.find(".albumThumb__title").text()).toEqual(params.title);
+    expect(wrapper.find(".albumThumb__subtitle").text()).toEqual(
+      params.subtitle
+    );
+  });
+
+  it("Render default element with click action", () => {
+    const params = {
+      image: "http://www.url.image/test.jpg",
+      title: "Album title",
+      subtitle: "Album subtitle",
+      onClick: jest.fn()
+    };
+    const wrapper = shallow(<AlbumThumb {...params} />);
+
+    wrapper.find(".albumThumb").simulate("click");
+
+    expect(
+      wrapper.find(".albumThumb__image .albumThumb__image__item").prop("src")
+    ).toEqual(params.image);
+    expect(wrapper.find(".albumThumb__title").text()).toEqual(params.title);
+    expect(wrapper.find(".albumThumb__subtitle").text()).toEqual(
+      params.subtitle
+    );
+    expect(params.onClick).toHaveBeenCalled();
   });
 });

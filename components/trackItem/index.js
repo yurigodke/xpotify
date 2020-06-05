@@ -23,9 +23,9 @@ class TrackItem extends PureComponent {
 }
 
 TrackItem.propTypes = {
-  number: PropTypes.number,
-  name: PropTypes.string,
-  duration: PropTypes.string,
+  number: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
   action: PropTypes.func,
   active: PropTypes.bool
 };

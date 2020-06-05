@@ -28,9 +28,9 @@ class AlbumProfile extends PureComponent {
 }
 
 AlbumProfile.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  image: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   onClick: PropTypes.func
 };
 

@@ -16,7 +16,7 @@ class Button extends PureComponent {
 }
 
 Button.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.string.isRequired,
   action: PropTypes.func
 };
 

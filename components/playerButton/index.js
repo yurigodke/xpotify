@@ -36,7 +36,7 @@ class PlayerButton extends PureComponent {
 }
 
 PlayerButton.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   action: PropTypes.func
 };
 

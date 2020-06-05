@@ -26,9 +26,10 @@ class Timeline extends PureComponent {
 
     const percent = Math.round((time * 100) / total);
 
-    const fillStyle = {
-      width: percent + "%"
-    };
+    const fillStyle = {};
+    if (percent) {
+      fillStyle.width = percent + "%";
+    }
 
     return (
       <div className={style["timeline"]}>
