@@ -8,17 +8,19 @@ class AlbumProfile extends PureComponent {
     const { title, subtitle, image, onClick } = this.props;
 
     return (
-      <div className={style["albumThumb"]} onClick={onClick}>
-        <div className={style["albumThumb__image"]}>
+      <div className={style["albumProfile"]} onClick={onClick}>
+        <div className={style["albumProfile__image"]}>
           <img
-            className={style["albumThumb__image__item"]}
+            className={style["albumProfile__image__item"]}
             src={image}
             alt=""
           />
         </div>
-        <div className={style["albumThumb__text"]}>
-          <div className={style["albumThumb__text__title"]}>{title}</div>
-          <div className={style["albumThumb__text__subtitle"]}>{subtitle}</div>
+        <div className={style["albumProfile__text"]}>
+          <div className={style["albumProfile__text__title"]}>{title}</div>
+          <div className={style["albumProfile__text__subtitle"]}>
+            {subtitle}
+          </div>
         </div>
       </div>
     );

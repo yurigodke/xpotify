@@ -1,15 +1,15 @@
 @import "~Misc/variables.scss";
 
 .albumCover {
-  width: 350px;
+  max-width: 350px;
   display: inline-block;
   text-align: center;
   padding: 10px 0;
   box-sizing: border-box;
 
   &__image {
-    width: 350px;
-    height: 350px;
+    max-width: 350px;
+    max-height: 350px;
     background: $imageBackgroundColor;
     margin: 0 10px;
 

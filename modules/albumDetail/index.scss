@@ -8,22 +8,32 @@
   height: 100%;
   overflow: auto;
 
-  &__top {
-  }
-
   &__content {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
 
+    @include breakpoint(tablet) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     &__cover {
       flex: 1;
+
+      @include breakpoint(tablet) {
+        margin-bottom: 40px;
+      }
     }
 
     &__trackList {
       flex: 2;
       overflow: auto;
       padding-bottom: 50px;
+
+      @include breakpoint(tablet) {
+        width: 100%;
+      }
     }
   }
 }

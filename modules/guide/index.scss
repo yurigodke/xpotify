@@ -14,6 +14,10 @@
     justify-content: space-between;
     height: 100%;
 
+    @include breakpoint(tablet) {
+      flex-direction: column;
+    }
+
     &__w-bottom {
       height: calc(100% - 120px);
     }
@@ -25,10 +29,20 @@
 
     &__bar {
       width: 5%;
+
+      @include breakpoint(tablet) {
+        width: 100%;
+        height: 80px;
+      }
     }
 
     &__content {
       width: 95%;
+
+      @include breakpoint(tablet) {
+        width: 100%;
+        height: calc(100% - 80px);
+      }
     }
   }
 

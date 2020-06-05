@@ -11,11 +11,26 @@
   justify-content: space-between;
   box-sizing: border-box;
 
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    padding: 10px 20px;
+  }
+
   &__img {
     width: 100%;
 
+    @include breakpoint(tablet) {
+      width: auto;
+      height: 100%;
+    }
+
     &__item {
       width: 100%;
+
+      @include breakpoint(tablet) {
+        width: auto;
+        height: 100%;
+      }
     }
   }
 

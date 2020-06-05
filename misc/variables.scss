@@ -14,3 +14,16 @@ $inputBigSize: 48px;
 $inputMediumSize: 28px;
 $inputDefaultSize: 18px;
 $inputSmallSize: 14px;
+
+//breakpoints
+@mixin breakpoint($point) {
+  @if $point == tablet {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  } @else if $point == mobile {
+    @media (max-width: 700px) {
+      @content;
+    }
+  }
+}

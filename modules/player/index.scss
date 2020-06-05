@@ -25,5 +25,9 @@
 
   &__null {
     width: 250px;
+
+    @include breakpoint(mobile) {
+      display: none;
+    }
   }
 }

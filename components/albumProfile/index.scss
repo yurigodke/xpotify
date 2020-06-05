@@ -1,11 +1,15 @@
 @import "~Misc/variables.scss";
 
-.albumThumb {
+.albumProfile {
   width: 250px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   padding: 0 0 0 20px;
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
 
   &__image {
     width: 60px;
