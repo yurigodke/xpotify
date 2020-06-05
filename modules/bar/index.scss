@@ -31,6 +31,22 @@
         width: auto;
         height: 100%;
       }
+
+      &__min {
+        display: block;
+
+        @include breakpoint(tablet) {
+          display: none;
+        }
+      }
+
+      &__hor {
+        display: none;
+
+        @include breakpoint(tablet) {
+          display: block;
+        }
+      }
     }
   }
 

@@ -20,8 +20,19 @@ function Bar({ clearToken }) {
     <div className={style["bar"]}>
       <div className={style["bar__img"]}>
         <img
-          className={style["bar__img__item"]}
+          className={classNames(
+            style["bar__img__item"],
+            style["bar__img__item__min"]
+          )}
           src="/image/logo-min.png"
+          alt=""
+        />
+        <img
+          className={classNames(
+            style["bar__img__item"],
+            style["bar__img__item__hor"]
+          )}
+          src="/image/logo-hor.png"
           alt=""
         />
       </div>
