@@ -47,6 +47,8 @@ function Bar({ clearToken }) {
 
 Bar.propTypes = {};
 
+export { Bar };
+
 const mapStateToProps = state => {
   return {};
 };

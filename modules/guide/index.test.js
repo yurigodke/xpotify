@@ -4,8 +4,6 @@ import { shallow } from "enzyme";
 
 import Guide from "./index";
 
-import { Input } from "Components";
-
 describe("<Guide />", () => {
   it("Render default element", () => {
     const wrapper = shallow(<Guide />);
@@ -14,10 +12,11 @@ describe("<Guide />", () => {
   });
 
   it("Render with content", () => {
-    const guideProps = {
-      content: <div>content</div>
-    };
-    const wrapper = shallow(<Guide {...guideProps} />);
+    const wrapper = shallow(
+      <Guide>
+        <div>content</div>
+      </Guide>
+    );
 
     expect(wrapper.find(".guide").exists()).toBeTruthy();
     expect(wrapper.find(".guide__main").exists()).toBeTruthy();
@@ -34,13 +33,14 @@ describe("<Guide />", () => {
   });
 
   it("Render with content and bar", () => {
-    const guideProps = {
-      bar: <div>bar</div>,
-      content: <div>content</div>
+    const params = {
+      bar: <div>bar</div>
     };
-    const wrapper = shallow(<Guide {...guideProps} />);
-
-    console.log(wrapper.find(".guide__main"));
+    const wrapper = shallow(
+      <Guide {...params}>
+        <div>content</div>
+      </Guide>
+    );
 
     expect(wrapper.find(".guide").exists()).toBeTruthy();
     expect(wrapper.find(".guide__main").exists()).toBeTruthy();
@@ -49,7 +49,7 @@ describe("<Guide />", () => {
     ).toBeFalsy();
     expect(
       wrapper
-        .find(".guide__main")
+        .find(".guide__main__bar")
         .children()
         .html()
     ).toEqual("<div>bar</div>");
@@ -71,6 +71,42 @@ describe("<Guide />", () => {
     expect(wrapper.find(".guide__main").exists()).toBeFalsy();
     expect(wrapper.find(".guide__main__bar").exists()).toBeFalsy();
     expect(wrapper.find(".guide__main__content").exists()).toBeFalsy();
+    expect(
+      wrapper
+        .find(".guide__bottom")
+        .children()
+        .html()
+    ).toEqual("<div>bottom</div>");
+  });
+
+  it("Render with content, bar and bottom", () => {
+    const params = {
+      bar: <div>bar</div>,
+      bottom: <div>bottom</div>
+    };
+    const wrapper = shallow(
+      <Guide {...params}>
+        <div>content</div>
+      </Guide>
+    );
+
+    expect(wrapper.find(".guide").exists()).toBeTruthy();
+    expect(wrapper.find(".guide__main").exists()).toBeTruthy();
+    expect(
+      wrapper.find(".guide__main").hasClass("guide__main__center")
+    ).toBeFalsy();
+    expect(
+      wrapper
+        .find(".guide__main__bar")
+        .children()
+        .html()
+    ).toEqual("<div>bar</div>");
+    expect(
+      wrapper
+        .find(".guide__main__content")
+        .children()
+        .html()
+    ).toEqual("<div>content</div>");
     expect(
       wrapper
         .find(".guide__bottom")

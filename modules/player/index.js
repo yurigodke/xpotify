@@ -14,15 +14,13 @@ import actions from "Actions";
 class Player extends PureComponent {
   constructor(props) {
     super(props);
+    this.audio = new Audio();
 
     this.state = {
       currentTime: 0,
       duration: 0,
-      playerOn: false
+      playerOn: this.startPlayer()
     };
-
-    this.audio = new Audio();
-    this.setTrackPlay();
   }
 
   componentDidMount() {
@@ -42,13 +40,24 @@ class Player extends PureComponent {
     }
   }
 
-  setTrackPlay = () => {
+  startPlayer = () => {
     const { currentTrack } = this.props;
+    let playerPlayed = false;
 
     if (currentTrack.preview_url) {
       this.audio.src = currentTrack.preview_url;
-      this.play();
+      this.audio.play();
+      playerPlayed = true;
     }
+
+    return playerPlayed;
+  };
+
+  setTrackPlay = () => {
+    const { currentTrack } = this.props;
+
+    this.audio.src = currentTrack.preview_url;
+    this.play();
   };
 
   timeupdate = () => {
